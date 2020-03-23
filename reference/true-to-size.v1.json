@@ -1,0 +1,178 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "true-to-size",
+    "version": "1.0",
+    "description": "Crowdsourcing true-to-size data and returning the average size",
+    "contact": {
+      "name": "Dmitry Tarasev"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/shoe/{sku}": {
+      "get": {
+        "summary": "Get TTS for shoe/s",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "": {
+                      "title": "Shoe",
+                      "type": "object",
+                      "description": "The `shoe` model is used to store the true-to-size data that the services ingests. Individial shoes are identified by thier SKU. Average true-to-size data is stored in the the `trueToSizeAverage` parameter, and `trueToSizeDataPoints` stores the number of data points used in the calculation.",
+                      "x-examples": {
+                        "Example-1": {
+                          "id": 1,
+                          "name": "Some Jordans",
+                          "sku": "UGG-BB-PUR-06",
+                          "trueToSizeAverage": 3.233202,
+                          "trueToSizeDataPoints": 48
+                        }
+                      },
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "sku": {
+                          "type": "string"
+                        },
+                        "trueToSizeAverage": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-shoe-size",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "examples": {
+                "example-1": {}
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "Retreives the average true-to-size data for the particular shoe descrbied by the `sku` parameter."
+      },
+      "post": {
+        "summary": "Submit TTS data for shoe/s",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-shoe-size",
+        "description": "Ingests the true-to-size value for a particular shoe. Internally, we recalculate the average for the particular shoe,",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "trueToSizeData": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": [
+        {
+          "description": ""
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "sku",
+          "in": "path",
+          "required": true,
+          "description": "The SKU of the shoe."
+        }
+      ]
+    }
+  },
+  "components": {
+    "securitySchemes": {},
+    "schemas": {
+      "Shoe": {
+        "title": "Shoe",
+        "type": "object",
+        "description": "The `shoe` model is used to store the true-to-size data that the services ingests. Individial shoes are identified by thier SKU. Average true-to-size data is stored in the the `trueToSizeAverage` parameter, and `trueToSizeDataPoints` stores the number of data points used in the calculation.",
+        "x-examples": {
+          "Example-1": {
+            "id": 1,
+            "name": "Some Jordans",
+            "sku": "UGG-BB-PUR-06",
+            "trueToSizeAverage": 3.233202,
+            "trueToSizeDataPoints": 48
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "trueToSizeAverage": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
