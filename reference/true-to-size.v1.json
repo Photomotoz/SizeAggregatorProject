@@ -33,7 +33,6 @@
                       "x-examples": {
                         "Example-1": {
                           "id": 1,
-                          "name": "Some Jordans",
                           "sku": "UGG-BB-PUR-06",
                           "trueToSizeAverage": 3.233202,
                           "trueToSizeDataPoints": 48
@@ -155,7 +154,6 @@
         "x-examples": {
           "Example-1": {
             "id": 1,
-            "name": "Some Jordans",
             "sku": "UGG-BB-PUR-06",
             "trueToSizeAverage": 3.233202,
             "trueToSizeDataPoints": 48
