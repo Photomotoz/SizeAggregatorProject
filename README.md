@@ -5,8 +5,6 @@
 
 <h3 align="center">True to Size</h3>
 
----form
-
 <p align="center"> Shoes.
     <br> 
 </p>
@@ -24,22 +22,13 @@
 True to size average aggregator
 
 
-Some things to keep in mind are 
-testing
-maintainability
-reliability
-logging/monitoring
+## 🔨 Known Issues <a name = "issues"></a>
 
-
-
-
-## ? Known Issues <a name = "issues"></a>
-
-*Cypress tests incomplete
-*DB passwords stored in code, not env
-*Logging
-*APM
-*Redundancy
+- Cypress tests incomplete
+- DB passwords stored in code, not env
+- Logging
+- APM
+- Redundancy
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
